@@ -20,8 +20,9 @@ jobs:
         run: ls /home/runner/work/action/action/action
       
       - name: Install dependencies
-        run: cd action/
-        npm install
+        run: |
+          cd action/
+          npm install
         
       - name: Build
         run: npm build
