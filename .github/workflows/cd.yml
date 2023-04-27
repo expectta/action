@@ -16,11 +16,11 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v2 # workflow에서 액세스할 수 있도록 저장소를 체크아웃
        
+      - name: List directory contents
+        run: ls /home/runner/work/action
+      
       - name: Install dependencies
         run: npm i
-      
-      - name: List directory contents
-      run: ls /home/runner/work/action
         
       - name: Build
         run: npm build
