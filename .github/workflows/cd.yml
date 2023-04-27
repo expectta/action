@@ -16,6 +16,9 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v2 # workflow에서 액세스할 수 있도록 저장소를 체크아웃
         
+      - name: Check file list
+        ruen : ls -al
+       
       - name: Install dependencies
         run: npm i
         
