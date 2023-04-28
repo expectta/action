@@ -2,12 +2,17 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
+const port = process.env.REACT_APP_PORT;
+
 function App() {
+  console.log("start");
+  console.log(process.env.REACT_APP_TEST);
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>이게 마지막이다</p>
+        <p>{port}</p>
         <a
           className="App-link"
           href="https://reactjs.org"
