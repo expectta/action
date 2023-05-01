@@ -12,6 +12,9 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>이게 마지막이다</p>
+        <p>채팅 기능</p>
+        <p>1. DB 설계</p>
+        <p>2. 양방향 통신 소켓 I/O</p>
         <p>{port}</p>
       </header>
     </div>
