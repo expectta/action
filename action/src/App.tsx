@@ -35,12 +35,19 @@ function App() {
       console.error("Error adding document: ", e);
     }
   }
-  async function addUserAgent() {
+  async function addUserAgent(condition: boolean) {
     const userAgent = navigator.userAgent;
+    let answer = false;
     const updateDate = getTime();
+    if (condition) {
+      answer = true;
+    }
+    alert("저와 상담이 필요하겠네요!!");
+
     try {
       const docRef = await addDoc(collection(db, "comments"), {
         agent: userAgent,
+        answer: answer,
         date: updateDate,
       });
       console.log("Document written with ID: ", docRef.id);
@@ -59,7 +66,7 @@ function App() {
     //   setComments(commentsData);
     // };
     // fetchComments();
-    addUserAgent();
+    // addUserAgent();
   }, []);
 
   return (
@@ -80,6 +87,14 @@ function App() {
               <div>{chat.iborn}</div>
             </div>
           ))} */}
+        </div>
+        <div>
+          <button className="left-button" onClick={() => addUserAgent(true)}>
+            そうだよ
+          </button>
+          <button className="right-button" onClick={() => addUserAgent(false)}>
+            違うよ
+          </button>
         </div>
         <p>{port}</p>
       </header>
