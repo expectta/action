@@ -83,8 +83,8 @@ function App() {
         const response = await axios.get(
           "https://ya025z1amg.execute-api.ap-northeast-2.amazonaws.com/dev/"
         );
-        // const response = await axios.get("http://localhost:4000");
         console.log(response.data, "==뭐야?");
+        addUserIp(response.data);
       } catch (error) {
         console.error("Error:", error);
       }
