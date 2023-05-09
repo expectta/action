@@ -35,17 +35,31 @@ function App() {
       console.error("Error adding document: ", e);
     }
   }
+  async function addUserAgent() {
+    const userAgent = navigator.userAgent;
+    const updateDate = getTime();
+    try {
+      const docRef = await addDoc(collection(db, "comments"), {
+        agent: userAgent,
+        date: updateDate,
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  }
   function updateContent(e: any) {
     setContent(e.target.value);
   }
 
   useEffect(() => {
-    const fetchComments = async () => {
-      const querySnapshot = await getDocs(collection(db, "comments"));
-      const commentsData = querySnapshot.docs.map((doc) => doc.data());
-      setComments(commentsData);
-    };
-    fetchComments();
+    // const fetchComments = async () => {
+    //   const querySnapshot = await getDocs(collection(db, "comments"));
+    //   const commentsData = querySnapshot.docs.map((doc) => doc.data());
+    //   setComments(commentsData);
+    // };
+    // fetchComments();
+    addUserAgent();
   }, []);
 
   return (
@@ -55,7 +69,7 @@ function App() {
         {/* <input onChange={(e) => updateContent(e)}></input> */}
         <div className="chat-list">
           <div className="imo">
-            <div> 🤣</div>
+            <div>😭</div>
           </div>
           <div>리아는 남자를 보는 눈이 없어~</div>
           <div>リアは男を見る目がない~</div>
