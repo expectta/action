@@ -40,3 +40,13 @@ code {
     transform: rotate(360deg);
   }
 }
+.left-button {
+  padding: 10px;
+  margin: 10px;
+  font-size: 22px;
+}
+.right-button {
+  padding: 10px;
+  margin: 10px;
+  font-size: 22px;
+}
