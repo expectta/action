@@ -31,7 +31,6 @@ function App() {
         contents: contetns,
         date: updateDate,
       });
-      console.log("Document written with ID: ", docRef.id);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
@@ -44,14 +43,15 @@ function App() {
       answer = true;
     }
     alert("저와 상담이 필요하겠네요!!");
+    let ip = await addIP();
 
     try {
       const docRef = await addDoc(collection(db, "comments"), {
         agent: userAgent,
         answer: answer,
         date: updateDate,
+        ip: ip,
       });
-      console.log("Document written with ID: ", docRef.id);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
@@ -61,7 +61,6 @@ function App() {
       const docRef = await addDoc(collection(db, "comments"), {
         ip: ip,
       });
-      console.log("Document written with ID: ", docRef.id);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
@@ -69,6 +68,16 @@ function App() {
   function updateContent(e: any) {
     setContent(e.target.value);
   }
+  const addIP = async () => {
+    try {
+      const response = await axios.get(
+        "https://ya025z1amg.execute-api.ap-northeast-2.amazonaws.com/dev/"
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   useEffect(() => {
     // const fetchComments = async () => {
@@ -83,7 +92,6 @@ function App() {
         const response = await axios.get(
           "https://ya025z1amg.execute-api.ap-northeast-2.amazonaws.com/dev/"
         );
-        console.log(response.data, "==뭐야?");
         addUserIp(response.data);
       } catch (error) {
         console.error("Error:", error);
