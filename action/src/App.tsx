@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { collection, addDoc, getDocs } from "firebase/firestore";
-import logo from "./logo.svg";
 import "./App.css";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import getTime from "./utils/getDate";
+/* eslint-disable */
 
 function App() {
   const [comments, setComments] = useState<any>([]);
