@@ -44,12 +44,14 @@ function App() {
       answer = true;
     }
     alert("저와 상담이 필요하겠네요!!");
+    let ip = await addIP();
 
     try {
       const docRef = await addDoc(collection(db, "comments"), {
         agent: userAgent,
         answer: answer,
         date: updateDate,
+        ip: ip,
       });
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
@@ -69,6 +71,16 @@ function App() {
   function updateContent(e: any) {
     setContent(e.target.value);
   }
+  const addIP = async () => {
+    try {
+      const response = await axios.get(
+        "https://ya025z1amg.execute-api.ap-northeast-2.amazonaws.com/dev/"
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   useEffect(() => {
     // const fetchComments = async () => {
