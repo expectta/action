@@ -4,6 +4,7 @@ import "./App.css";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import getTime from "./utils/getDate";
+import axios from "axios";
 /* eslint-disable */
 
 function App() {
@@ -55,6 +56,16 @@ function App() {
       console.error("Error adding document: ", e);
     }
   }
+  async function addUserIp(ip: string) {
+    try {
+      const docRef = await addDoc(collection(db, "comments"), {
+        ip: ip,
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  }
   function updateContent(e: any) {
     setContent(e.target.value);
   }
@@ -67,6 +78,19 @@ function App() {
     // };
     // fetchComments();
     // addUserAgent();
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://ya025z1amg.execute-api.ap-northeast-2.amazonaws.com/dev/"
+        );
+        // const response = await axios.get("http://localhost:4000");
+        console.log(response.data, "==뭐야?");
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (
