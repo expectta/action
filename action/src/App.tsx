@@ -42,7 +42,7 @@ function App() {
     if (condition) {
       answer = true;
     }
-    alert("저와 상담이 필요하겠네요!!");
+    alert("test 감사합니다");
     let ip = await addIP();
 
     try {
@@ -110,8 +110,8 @@ function App() {
           <div className="imo">
             <div>😭</div>
           </div>
-          <div>리아는 남자를 보는 눈이 없어~</div>
-          <div>リアは男を見る目がない~</div>
+          <div>test 중 입니다</div>
+          <div>버튼을 눌러주세요</div>
           {/* {comments.map((chat: any, index: number) => (
             <div className="chat-item" key={index}>
               <div className="chat-item-contents">{chat.contents}</div>
@@ -122,10 +122,10 @@ function App() {
         </div>
         <div>
           <button className="left-button" onClick={() => addUserAgent(true)}>
-            そうだよ
+            yes
           </button>
           <button className="right-button" onClick={() => addUserAgent(false)}>
-            違うよ
+            no
           </button>
         </div>
         <p>{port}</p>
