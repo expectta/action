@@ -110,7 +110,7 @@ function App() {
           <div className="imo">
             <div>😭</div>
           </div>
-          <div>리코는 바보입니다.</div>
+          <div>사랑스러운 리코</div>
           <div>버튼을 눌러주세요</div>
           {/* {comments.map((chat: any, index: number) => (
             <div className="chat-item" key={index}>
