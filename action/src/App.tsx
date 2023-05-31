@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { collection, addDoc } from "firebase/firestore";
 import "./App.css";
+import { useEffect, useState } from "react";
+import { collection, addDoc } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import getTime from "./utils/getDate";
@@ -12,13 +12,13 @@ function App() {
   const [content, setContent] = useState<String>("");
 
   const firebaseConfig = {
-    apiKey: "AIzaSyAbomLIYFK_Pd6-A0on2u-weB0CinrHo3w",
-    authDomain: "devchat-3af5b.firebaseapp.com",
-    projectId: "devchat-3af5b",
-    storageBucket: "devchat-3af5b.appspot.com",
-    messagingSenderId: "212380416736",
-    appId: "1:212380416736:web:a04569141a1acccf7eee85",
-    measurementId: "G-W5PX2TZY35",
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTO_DOMAIN,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
+    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
   };
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
@@ -87,18 +87,17 @@ function App() {
     // };
     // fetchComments();
     // addUserAgent();
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "https://ya025z1amg.execute-api.ap-northeast-2.amazonaws.com/dev/"
-        );
-        addUserIp(response.data);
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    };
-
-    fetchData();
+    // const fetchData = async () => {
+    //   try {
+    //     const response = await axios.get(
+    //       "https://ya025z1amg.execute-api.ap-northeast-2.amazonaws.com/dev/"
+    //     );
+    //     addUserIp(response.data);
+    //   } catch (error) {
+    //     console.error("Error:", error);
+    //   }
+    // };
+    // fetchData();
   }, []);
 
   return (
